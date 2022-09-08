@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import NavBar from './components/Navbar';
+import ItemListContainer from './components/ItemListContainter';
+import ItemCount from './components/ItemCount';
 
 function App() {
+  const stock = 10;
+  const initial = 1;
+  let totalStock = 0;
+  let saludo = {string: "Bienvenidos"};
+  const onAdd = (cantidad) => totalStock === 10 ? alert("No hay stock suficiente") : totalStock += cantidad;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+      <ItemListContainer greeting ={saludo} />
+      <ItemCount stock={stock} initial={initial} onAdd={onAdd} />
     </div>
   );
 }

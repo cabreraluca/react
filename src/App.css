@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300&family=Oswald:wght@200;300&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Oswald', sans-serif;
+}
 .App {
   text-align: center;
 }
@@ -27,12 +35,67 @@
 .App-link {
   color: #61dafb;
 }
+body{
+  background-color: whitesmoke;
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navBar{
+  background-color: #000000;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  display: flex;
+  text-decoration: none;
+  height: 4rem;
+  padding: 5px 10%;
+}
+.navBar li{ 
+  display: inline-block;
+  margin: 0;
+}
+.navBar li a{
+  color: white;
+  padding: 0 20px;
+  text-align: center;
+  text-decoration: none;
+  justify-content: center;
+  transition: all 0.6s;
+}
+.navBar li :hover{
+  background-color: red;
+  border-radius: 30px;
+  transform: scale(1.2);
+}
+.navBar p{
+  justify-content: flex-start;
+  cursor: pointer;
+  width: auto;
+  display: flex;
+  color: white;
+  font-size: 3rem;
+  transition: all 0.3s;
+}
+.navBar p:hover{
+  transform: scale(1.2);
+}
+
+.navBar a button{
+  font-weight: 600;
+  background-color: red;
+  color: white;
+  padding: 3px 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 30px;
+  transition: all 0.3s;
+}
+.navBar a button:hover{
+  background-color: #e23000;
+  color: black;
+  transform: scale(1.2);
+}
+
+.carrito{
+  height: 1.8rem;
+  width: 1.8rem;
 }
