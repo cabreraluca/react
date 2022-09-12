@@ -1,8 +1,9 @@
 import React from 'react'
+import ItemList from "./ItemList"
 export default function ItemListContainer({greeting}) {
   return (
-    <div style={{backgroundColor: 'red', height: 50}}>
-        <h1 style={{color: 'white'}}>Saludo: {greeting.string}</h1>
+    <div style={{display: 'flex', width: '100%',}}>
+      <ItemList />
     </div>
   )
 }
