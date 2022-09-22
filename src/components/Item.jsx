@@ -5,8 +5,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
 
 export default function Item({item}) {
+  const {id} = item;
+  const navegar = useNavigate();
   return (
     <div>
         <Card sx={{ backgroundColor: "black", padding: '1.5rem' , margin: '1rem', borderRadius: 0 }}>
@@ -27,7 +30,7 @@ export default function Item({item}) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button style={{textalign: 'center', color: 'red' }} >Comprar</Button>
+        <Button onClick={()=>navegar(`/product/${id}`)} style={{textalign: 'center', color: 'red' }} >Ver más</Button>
       </CardActions>
     </Card>
     </div>

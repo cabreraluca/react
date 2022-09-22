@@ -3,6 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { initializeApp } from "firebase/app";
+initializeApp({
+	apiKey: "AIzaSyBojtFUMeQammMkPree-LwTnML4aStw6BQ",
+	authDomain: "keo-f421f.firebaseapp.com",
+	projectId: "keo-f421f",
+	storageBucket: "keo-f421f.appspot.com",
+	messagingSenderId: "25514149318",
+	appId: "1:25514149318:web:2bb1dd45fd1777a5a11ec7",
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
