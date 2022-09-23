@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link, NavLink, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const theme = createTheme({
   palette: {
     primary: {
@@ -24,7 +24,7 @@ const theme = createTheme({
   },
 });
 
-const pages = ['Remeras', 'Buzos', 'Pantalones'];
+const pages = ['remeras', 'buzos', 'pantalones'];
 const settings = ['Perfil', 'Mis compras', 'Cerrar sesión'];
 
 const ResponsiveAppBar = () => {
@@ -45,7 +45,6 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-const id = useParams();
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="static" color='primary'>
@@ -101,7 +100,7 @@ const id = useParams();
               >
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                    <Link style={{ textDecoration: 'none', fontFamily: 'system-ui', color: 'red', textTransform: 'uppercase' }} to={`/category/${page}`}>{page}</Link>
                   </MenuItem>
                 ))}
               </Menu>
@@ -131,7 +130,7 @@ const id = useParams();
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
-                  <Link style={{textdecoration:'none' }} to={`/categoria/${page}`}>{page}</Link>
+                  <Link style={{ textDecoration: 'none', fontFamily: 'system-ui', color: 'white' }} to={`/category/${page}`}>{page}</Link>
                 </Button>
               ))}
             </Box>

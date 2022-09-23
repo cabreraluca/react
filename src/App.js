@@ -15,7 +15,7 @@ import ItemDetailContainer from './components/ItemDetailContainer';
           <NavBar />
           <Routes>  
             <Route path='' element={<ItemListContainer />} />
-            <Route path='/category/:id' element={<ItemListContainer />}/>
+            <Route path='/category/:categoriaId' element={<ItemListContainer />}/>
             <Route path='/product/:id' element={<ItemDetailContainer />}/>
             <Route path='/products' element={<ItemListContainer />} />
           </Routes>
