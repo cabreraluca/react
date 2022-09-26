@@ -3,7 +3,7 @@ import React from 'react';
 import NavBar from './components/Navbar';
 import ItemListContainer from './components/ItemListContainter';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-// import ItemCount from './components/ItemCount';
+import Cart from './components/Cart';
 import Footer from './components/Footer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 // import TestFirebase from './components/TestFirebase';
@@ -18,6 +18,7 @@ import ItemDetailContainer from './components/ItemDetailContainer';
             <Route path='/category/:categoriaId' element={<ItemListContainer />}/>
             <Route path='/product/:id' element={<ItemDetailContainer />}/>
             <Route path='/products' element={<ItemListContainer />} />
+            <Route path='/cart' element={<Cart />} />
           </Routes>
           < Footer />
         </BrowserRouter></>
