@@ -6,11 +6,13 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Cart from './components/Cart';
 import Footer from './components/Footer';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import { CartProvider } from './context/CartContext';
+
 // import TestFirebase from './components/TestFirebase';
  function App() {
      return (
        <div className="App">
-        <>
+      <CartProvider>  
         <BrowserRouter>
           <NavBar />
           <Routes>  
@@ -21,7 +23,8 @@ import ItemDetailContainer from './components/ItemDetailContainer';
             <Route path='/cart' element={<Cart />} />
           </Routes>
           < Footer />
-        </BrowserRouter></>
+        </BrowserRouter>
+      </CartProvider>
        </div>
      ); 
   
