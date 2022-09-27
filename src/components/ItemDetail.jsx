@@ -2,12 +2,24 @@ import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ItemCount from './ItemCount';
+import { useCart } from '../context/CartContext';
 const ItemDetail = ({productDetail}) => {
   const navigate = useNavigate();
   let [contador, setContador] = useState(1);
   let [compraRealizada, setCompraRealizada] = useState(false);
+  const {id, title, price, stock, pictureUrl} = productDetail;
+  const {addItem} = useCart();
   const onAdd = (cantidad) => {
+    let purchase = {
+      id,
+      title,
+      price,
+      stock,
+      pictureUrl,
+      quantity:cantidad
+    }
     setCompraRealizada(true);
+    addItem(purchase);
     alert(`añadiste ${cantidad} items al carrito`)
   }
   return (

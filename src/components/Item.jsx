@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
 export default function Item({item}) {
-  const {id} = item.id;
+  const {id} = item;
   const navegar = useNavigate();
   return (
     <div>
