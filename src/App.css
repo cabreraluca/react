@@ -20,7 +20,9 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.contador button:hover{
+   size-adjust: 1.5;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

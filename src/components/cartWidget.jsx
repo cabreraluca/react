@@ -1,9 +1,12 @@
 import React from 'react';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-export default function cartWidget() {
+import { useCart } from '../context/CartContext';
+export default function CartWidget() {
+  const {cartQuantity, cart} = useCart()
   return (
-    <div>
-      < ShoppingCartOutlinedIcon />
+    <div style={{display:'flex', textDecoration:'none'}}>
+      < ShoppingCartOutlinedIcon style={{color:'white'}} />
+      <p style={{color: 'white'}}>{cartQuantity() || ''}</p>
     </div>
   )
 }
