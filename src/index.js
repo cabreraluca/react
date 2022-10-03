@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { initializeApp } from "firebase/app";
+import {getFirestore} from "firebase/firestore"
 initializeApp({
 	apiKey: "AIzaSyBojtFUMeQammMkPree-LwTnML4aStw6BQ",
 	authDomain: "keo-f421f.firebaseapp.com",
@@ -12,6 +13,8 @@ initializeApp({
 	messagingSenderId: "25514149318",
 	appId: "1:25514149318:web:2bb1dd45fd1777a5a11ec7",
 });
+const app = initializeApp;
+export const db = getFirestore(app);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

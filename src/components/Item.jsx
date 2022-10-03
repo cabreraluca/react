@@ -20,13 +20,13 @@ export default function Item({item}) {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div" color={'white'}>
-         {item.id}: {item.title}
+          {item.title}
         </Typography>
         <Typography variant="body2" color="red">
           {item.description}
         </Typography>
         <Typography variant="body2" color="white">
-          Price: ${item.price}
+          ${item.price}
         </Typography>
       </CardContent>
       <CardActions>
