@@ -7,13 +7,14 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '..';
 export default function ItemListContainer({greeting}) {
   const [productos, setProductos] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const{ categoriaId } = useParams();
   useEffect(() => {
     const productos = categoriaId ?query(collection(db, "products"), where("category", "==", categoriaId)) : collection(db, "products");
     getDocs(productos)
     .then((result)=>{
       const lista = result.docs.map((product)=>{
+      setLoading(false)  
         return{
           id:product.id,
           ...product.data()
@@ -38,7 +39,7 @@ export default function ItemListContainer({greeting}) {
   // }, [categoriaId])
   return (
     <div style={{display: 'flex', width: '100%',}}>
-      {loading ? <h2>Cargando...</h2> : <ItemList productos={productos} /> }
+      {loading ? <h2 style={{color:'white', textAlign:'center'}}>Cargando...</h2> : <ItemList productos={productos} /> }
     </div>
   )
 }
