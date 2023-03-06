@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import { CartProvider } from './context/CartContext';
 import Checkout from './components/Checkout';
+import Orders from './components/Orders';
 
 // import TestFirebase from './components/TestFirebase';
  function App() {
@@ -23,6 +24,7 @@ import Checkout from './components/Checkout';
             <Route path='/products' element={<ItemListContainer />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/checkout' element={<Checkout />} />
+            <Route path='/admin' element={<Orders />} />
           </Routes>
           < Footer />
         </BrowserRouter>

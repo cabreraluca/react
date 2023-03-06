@@ -3,7 +3,7 @@ import { useCart } from '../context/CartContext'
 import ItemCount from './ItemCount'
 import { useState } from 'react';
 import ItemDetail from './ItemDetail';
-export default function CartItem({compra, stock, initial, onAdd}) {
+export default function CartItem({compra}) {
     let [contador, setContador] = useState(compra.quantity);
     const {removeItem} = useCart()
   return (

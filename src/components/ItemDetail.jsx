@@ -7,14 +7,13 @@ const ItemDetail = ({productDetail}) => {
   const navigate = useNavigate();
   let [contador, setContador] = useState(1);
   let [compraRealizada, setCompraRealizada] = useState(false);
-  const {id, title, price, stock, pictureUrl} = productDetail;
+  const {id, title, price, pictureUrl} = productDetail;
   const {addItem} = useCart();
   const onAdd = (cantidad) => {
     let purchase = {
       id,
       title,
       price,
-      stock,
       pictureUrl,
       quantity:cantidad
     }

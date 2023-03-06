@@ -1,41 +1,46 @@
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, getFirestore, serverTimestamp} from 'firebase/firestore';
 import React, { useState } from 'react'
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
-import Cart from './Cart';
 
 export default function Checkout() {
-    const {cart, cartTotal} = useContext(CartContext);
-    const [email, setEmail] = useState("");
-    const [nombre, setNombre] = useState("");
-    const [tel, setTel] = useState("");
-    const [orderId, setOrderId] = useState()
-    const terminarCompra = (e)=> {
-      e.preventDefault()
-      const db = getFirestore()
-      const micollection = collection(db, 'orders')
-      const order = {
-        buyer:{
-          name: nombre,
-          email: email,
-          telefono: tel,
-        },
-        items:{
-          cart
-        },
-        total: cartTotal(), 
-      }
-      console.log(order)
-      addDoc(collection, order).then((res)=>{setOrderId(res.id)})
-    }
+  let {cart, cartTotal, clear} = useContext(CartContext);
+  const db = getFirestore();
+  const orders = collection(db, "orders");
+  const [orderId, setOrderId] = useState();
+  const [buyer, setBuyer] = useState({});
+  const buyerData = (e) =>{
+    setBuyer({
+        ...buyer,
+        [e.target.name] : e.target.value
+    })
+}
+  const TerminarCompra = (e)=> {
+    e.preventDefault();
+    console.log("Comprador:", buyer);
+    console.log("Carrito:", cart);
+    console.log("Total:", cartTotal());
+    addDoc(orders, {
+      buyer,
+      items: cart,
+      total: cartTotal(),
+      date: serverTimestamp(),
+    }).then((res)=>{
+        setOrderId(res.id);
+        clear();
+    }).catch((error)=>console.log(error));
+  }
   return (
-    <>
-      <form onSubmit={terminarCompra} style={{display:'grid', justifyContent:'center', margin:'2rem'}}>
-          <input onChange={(e)=> setNombre(e.target.value)} value={nombre} type="text" placeholder='Ingrese su nombre' />
-          <input onChange={(e)=> setEmail(e.target.value)} value={email} type="email" placeholder='Ingrese su email' />
-          <input onChange={(e)=> setTel(e.target.value)} value={tel} type="string" placeholder='Ingrese su teléfono' />
-          <button type='submit'>Proceder al pago</button>
+    <>{!orderId? 
+      <form onSubmit={TerminarCompra} style={{display:'grid', justifyContent:'center', margin:'2rem'}}>
+          <input type="text" name="nombre" onChange={buyerData} value={buyer.nombre || ''} />
+          <input type="email" name="email" onChange={buyerData} value={buyer.email || ''} />
+          <input type="text" name="telefono" onChange={buyerData} value={buyer.telefono || ''} />
+          <button type='submit'>Terminar compra</button>
       </form>
+      :
+      <h2 style={{display:'grid', color:'white', justifyContent:'center'}}>Gracias por su compra, su numero de orden es: {orderId}</h2>
+      }
     </>
   )
 }
