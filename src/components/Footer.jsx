@@ -3,6 +3,6 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <div style={{ width:'100%', bottom:0 }}><p style={{textalign: 'center', color: 'white' }}>Todos los derechos reservados</p></div>
+    <div style={{ position: "fixed", bottom: 0, width: "100%", height: "40px", backgroundColor: 'black' }}><p style={{textalign: 'center', color: 'white' }}>Todos los derechos reservados</p></div>
   )
 }

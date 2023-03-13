@@ -1,4 +1,4 @@
-import { collection, getFirestore, getDocs } from 'firebase/firestore'
+import { collection, getFirestore, getDocs} from 'firebase/firestore'
 import { React, useState, useEffect } from 'react'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -13,13 +13,13 @@ export default function Orders() {
         const orders = collection(db, "orders");
 
         const fetchOrders = async () => {
-            const data = await getDocs(orders);
-            setOrdersList(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-        };
-
-        fetchOrders();
-    }, []);
-    console.log(ordersList)
+        const data = await getDocs(orders);
+        if (data) {
+          setOrdersList(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })).sort((a, b) => b.date.seconds + a.date.seconds));
+        }
+};
+fetchOrders();
+}, []);
   return (
     <div style={{backgroundColor:'black', color:'white', textAlign:'left' }}>
         <h2 style={{textAlign:'center', fontSize:'3rem'}}>Órdenes</h2>
@@ -29,7 +29,7 @@ export default function Orders() {
                 <h3>Comprador: {order.buyer.nombre}</h3>
                 <Accordion sx={{backgroundColor:'black', color:'white'}}>
                 <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
+                  expandIcon={<ExpandMoreIcon sx={{backgroundColor:'white'}}/>}
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                 >
@@ -42,7 +42,7 @@ export default function Orders() {
                     <ul style={{listStyleType:'none'}}>
                         {order.items.map((item)=>(
                             <li key={item.id}>
-                                {item.title},
+                               {item.quantity} x {item.title},
                                 Id: {item.id}
                             </li>
                         ))}

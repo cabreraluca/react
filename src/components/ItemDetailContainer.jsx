@@ -24,7 +24,7 @@ export default function ItemDetailCointainer() {
 
   return (
     <div>
-        {loading ? <p> Cargando </p> : <ItemDetail productDetail={productDetail}/>}
+        {loading ? <h2 style={{color:'white'}}> Cargando... </h2> : <ItemDetail productDetail={productDetail}/>}
     </div>
   )
 }

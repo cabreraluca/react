@@ -3,6 +3,8 @@ import { useCart } from '../context/CartContext'
 import ItemCount from './ItemCount'
 import { useState } from 'react';
 import ItemDetail from './ItemDetail';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 export default function CartItem({compra}) {
     let [contador, setContador] = useState(compra.quantity);
     const {removeItem} = useCart()
@@ -12,7 +14,9 @@ export default function CartItem({compra}) {
         <p style={{margin:'auto'}}>{compra.title}</p>
         <p>{contador}</p>
         <p style={{margin:'auto', textAlign:'center'}}>${compra.price * compra.quantity} </p>
-        <button style={{backgroundColor:'whitesmoke', height: 25, width:60, textalign: 'center'}} onClick={()=>removeItem(compra.id)}>Eliminar</button>
+        <IconButton aria-label="delete">
+        <DeleteIcon color='primary' onClick={()=>removeItem(compra.id)}/>
+        </IconButton>
     </div>
   )
 }

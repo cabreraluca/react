@@ -9,10 +9,13 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import { CartProvider } from './context/CartContext';
 import Checkout from './components/Checkout';
 import Orders from './components/Orders';
+import { ThemeProvider } from '@mui/material';
+import {theme} from './theme/materialtheme'
 
 // import TestFirebase from './components/TestFirebase';
  function App() {
      return (
+      <ThemeProvider theme={theme}>
        <div className="App">
       <CartProvider>  
         <BrowserRouter>
@@ -29,7 +32,8 @@ import Orders from './components/Orders';
           < Footer />
         </BrowserRouter>
       </CartProvider>
-       </div>
+      </div>
+      </ThemeProvider>
      ); 
   
 }

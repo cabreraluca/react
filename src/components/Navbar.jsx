@@ -23,8 +23,7 @@ const theme = createTheme({
   },
 });
 
-const pages = ['remeras', 'buzos', 'pantalones'];
-const settings = ['Perfil', 'Mis compras', 'Cerrar sesión'];
+const pages = ['remeras', 'buzos'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -108,7 +107,7 @@ const ResponsiveAppBar = () => {
               variant="h3"
               noWrap
               component="a"
-              href=""
+              href="/"
               sx={{
                 mr: 2,
                 display: { xs: 'flex', md: 'none' },
